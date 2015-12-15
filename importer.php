@@ -6,15 +6,12 @@
 		die("Connection failed: " . mysqli_connect_error());
 	}
 	
-	$files = scandir("C:/Users/Admin/Desktop/2015/"); //Path to the Main Folder
+	$files = scandir("C:/Users/Admin/Desktop/2015/"); //Path to the Main Directory/Folder
 	$tableCount = 1; // Counter to check the Total Files processed
 	set_time_limit(0); // Sets the Time Limit to Unlimited - saves you from Maximum execution time of 30 seconds exceeded ERROR of PHP
 	foreach($files as $file){
-		
-		if($file != '.' && $file != '..')
-		{
 		// if the folder contains folders which has the .csv files then use the below IF Statement
-			$subfiles = scandir("C:/Users/Admin/Desktop/2015/".$file);
+			$subfiles = scandir("C:/Users/Admin/Desktop/2015/".$file); //Creates path to the Sub Directory/Folder
 			foreach($subfiles as $subfile)
 			{
 				echo '<br/><br/>';
@@ -47,7 +44,7 @@
 					$tableCount++;
 				}
 			}
-		}
+		
 		}
 		mysqli_close($conn);
 					
